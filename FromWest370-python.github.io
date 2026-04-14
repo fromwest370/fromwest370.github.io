@@ -45,7 +45,6 @@
     <section>
       <h2>📞 連絡先</h2>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/hiroyuki-morimoto-5838b23a1/">@PooHiro</a></p>
-      <p>Email: from.west370@gmail.com</p>
     </section>
   </div>
   
