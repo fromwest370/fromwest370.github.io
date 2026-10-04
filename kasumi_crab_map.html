@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>香住ガニを食べられる店 香住駅から近い順</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{--ink:#12324a;--tide:#e9f0f5;--crab:#c23a2b;--teal:#1b7f8c;--line:#c9d6e0}
+*{box-sizing:border-box}
+body{margin:0;height:100vh;display:flex;flex-direction:column;font-family:"Hiragino Sans","Yu Gothic UI",Meiryo,system-ui,sans-serif;color:var(--ink);line-height:1.6}
+header{padding:12px 18px;border-bottom:1px solid var(--line)}
+h1{font-size:1.2rem;margin:0}
+header p{margin:2px 0 0;font-size:.82rem}
+.wrap{flex:1;min-height:0;display:flex}
+aside{width:390px;overflow:auto;border-right:1px solid var(--line);background:var(--tide)}
+#map{flex:1;min-height:320px}
+.legend{padding:10px 14px;font-size:.8rem;display:flex;gap:14px;flex-wrap:wrap}
+.item{display:flex;gap:10px;width:100%;text-align:left;padding:10px 14px;border:0;border-top:1px solid var(--line);background:transparent;color:inherit;font:inherit;cursor:pointer}
+.item:hover,.item.on{background:#fff}
+.item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.item b{display:block}.item small{display:block;font-size:.78rem}
+.item .st{color:#4d6579}
+.pin{width:28px;height:28px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 3px #345;color:#fff;font-weight:700;font-size:13px;line-height:24px;text-align:center}
+.meal{background:var(--crab)}.mkt{background:var(--teal)}
+.pin.st{background:var(--ink);border-radius:4px;font-size:12px}
+.item .pin{flex:none}
+footer{padding:12px 14px;font-size:.75rem;border-top:1px solid var(--line)}
+@media(max-width:760px){body{height:auto}.wrap{flex-direction:column-reverse}aside{width:auto;border-right:0}#map{height:60vh}}
+</style></head><body>
+<header><h1>香住ガニを食べられる店 香住駅から近い順</h1>
+<p>香住ガニ(ベニズワイガニ)の漁期は9月〜翌年5月ごろです。価格・営業時間は行く前に確認してください。</p></header>
+<div class="wrap"><aside>
+<div class="legend"><span><span class="pin meal" style="display:inline-block;width:14px;height:14px;vertical-align:-2px"></span> 食事</span><span><span class="pin mkt" style="display:inline-block;width:14px;height:14px;vertical-align:-2px"></span> 市場</span><span>四角は香住駅(起点)</span></div>
+<div id="list"></div>
+<footer>距離は香住駅からの直線距離で、徒歩ではもう少しかかります。重なって見えるピンは、地図を拡大すると分かれます。メモの価格・営業日は古い記事に基づく場合があります。<br>店舗データ: OpenPOI API (Overture Maps Foundation, CDLA-Permissive-2.0)。地図: © OpenStreetMap contributors。作成日 2026-10-04。</footer>
+</aside><div id="map"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const S={lat:35.635749,lng:134.623122},D=[{"rank": 1, "name": "にしとも かに市場", "type": "市場", "dist": 503, "lat": 35.63952326, "lng": 134.62618807, "memo": "海鮮市場。生きたカニを茹でて販売。れんが亭の隣。食事より購入向け", "status": "記事で確認"}, {"rank": 2, "name": "かに八代 れんが亭", "type": "食事", "dist": 511, "lat": 35.63951291, "lng": 134.6263649, "memo": "かに丼などの海鮮レストラン。昼11:00〜14:00(LO)、不定休。TEL 0796-36-1341。参考価格 かに丼1,620円(旧情報)", "status": "記事で確認"}, {"rank": 3, "name": "喜いち", "type": "食事", "dist": 602, "lat": 35.63092106, "lng": 134.62613185, "memo": "香住IC寄りの山側。口コミに香住ガニ目的の予約の記述あり", "status": "口コミのみ(メニュー・価格は未確認)"}, {"rank": 4, "name": "三七十鮨", "type": "食事", "dist": 874, "lat": 35.64156004, "lng": 134.62964033, "memo": "漁港のそばの寿司店。カニカニカーニバル丼(参考1,780円)、香住ガニのボイル(参考1杯2,592円)。いずれも旧情報", "status": "記事で確認(価格は旧情報)"}, {"rank": 5, "name": "カニ工房 まるや", "type": "食事", "dist": 958, "lat": 35.64215739, "lng": 134.63021008, "memo": "マルヤ丼(香住ガニ1杯分、参考2,530円・旧情報)。食事11:30〜15:00(LO14:30)、水曜休み(旧情報)、16席。TEL 0796-20-9890", "status": "記事で確認(営業日は旧情報)"}, {"rank": 6, "name": "遊魚館", "type": "市場", "dist": 1279, "lat": 35.64523797, "lng": 134.6311259, "memo": "但馬漁協直営の海鮮市場。イートインスペースあり。お土産中心", "status": "記事で確認(食事の内容は未確認)"}];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const map=L.map('map');
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+const ic=h=>L.divIcon({className:'',html:h,iconSize:[28,28],iconAnchor:[14,14]});
+L.marker([S.lat,S.lng],{icon:ic('<div class="pin st">駅</div>'),title:'香住駅'}).addTo(map);
+const list=document.getElementById('list'),ms=[],bs=[];
+const on=i=>bs.forEach((b,j)=>b.classList.toggle('on',i===j));
+D.forEach((d,i)=>{
+ const cls=d.type==='食事'?'meal':'mkt';
+ const m=L.marker([d.lat,d.lng],{icon:ic(`<div class="pin ${cls}">${d.rank}</div>`),title:d.name}).addTo(map);
+ m.bindPopup(`<b>${esc(d.name)}</b><br>${esc(d.type)}、駅から約${d.dist}m<br>${esc(d.memo)}<br><small>${esc(d.status)}</small>`);
+ m.on('click',()=>{on(i);bs[i].scrollIntoView({block:'nearest'})});
+ const b=document.createElement('button');b.className='item';
+ b.innerHTML=`<span class="pin ${cls}">${d.rank}</span><span><b>${esc(d.name)}</b><small class="st">${esc(d.type)}、駅から約${d.dist}m</small><small>${esc(d.memo)}</small><small class="st">${esc(d.status)}</small></span>`;
+ b.onclick=()=>{on(i);map.setView([d.lat,d.lng],17,{animate:!reduce});m.openPopup()};
+ list.appendChild(b);ms.push(m);bs.push(b);
+});
+map.fitBounds(L.latLngBounds([[S.lat,S.lng],...D.map(d=>[d.lat,d.lng])]).pad(0.15));
+</script></body></html>
