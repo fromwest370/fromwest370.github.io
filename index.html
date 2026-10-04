@@ -1,80 +1,77 @@
-<h1>Python/AI Portfolio</h1><p>Google AI Essentials Certified</p>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>FromWest370 - Python・業務改善のフリーランス</title>
-  <!-- CSSやテーマは既存のものを活用 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FromWest370 - Python・業務改善のフリーランス</title>
+<meta name="description" content="製造業の生産管理経験を活かした、Python自動化・AI業務改善のポートフォリオ">
+<style>
+:root{--ink:#1d2b36;--accent:#0f5c63;--soft:#eef3f4;--line:#cfdadd}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Yu Gothic UI",Meiryo,system-ui,sans-serif;color:var(--ink);line-height:1.8;background:#fff}
+main{max-width:720px;margin:0 auto;padding:32px 20px 48px}
+h1{font-size:1.7rem;margin:0}
+.lead{margin:4px 0 0;color:var(--accent);font-weight:600}
+h2{font-size:1.15rem;margin:36px 0 10px;padding-bottom:4px;border-bottom:2px solid var(--line)}
+h3{font-size:1rem;margin:0 0 4px}
+ul{padding-left:1.2em;margin:8px 0}
+.work{background:var(--soft);border-left:4px solid var(--accent);padding:12px 16px;margin:12px 0}
+.work p{margin:4px 0}
+.note{font-size:.85rem}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+footer{margin-top:40px;font-size:.8rem;color:#4d6068}
+</style>
 </head>
 <body>
-  <!-- ヘッダー -->
-  <header>
-    <h1>FromWest370</h1>
-    <p>製造業の生産管理経験を活かした<br>Python自動化・AI業務改善の専門家</p>
-  </header>
+<main>
+<h1>FromWest370</h1>
+<p class="lead">Python・業務改善のフリーランス / Google AI Essentials 修了</p>
 
-  <!-- 自己紹介セクション -->
-  <section id="about">
-    <h2>はじめまして、FromWest370です</h2>
-    <p>兵庫県在住。製造業の生産管理・在庫管理を20年以上経験後、退職。<br>
-    現在、Python・AI・Excelを活用した業務効率化をフリーランスで支援しています。<br>
-    Google AI Essentials修了。CrowdWorks・ココナラで実績蓄積中。</p>
-  </section>
+<h2>はじめまして</h2>
+<p>兵庫県在住。製造業の生産管理・在庫管理を20年以上経験した後、退職しました。現在、Python・AI・Excelを活用した業務効率化を、フリーランスとして支援しています。CrowdWorks・ココナラで活動中です。</p>
 
-  <!-- 得意分野セクション -->
-  <section id="skills">
-    <h2>得意分野</h2>
-    <ul>
-      <li>Pythonスクリプトによるデータ集計・自動化（pandas, Jupyter）</li>
-      <li>Excel/Google Sheetsの業務ツール作成</li>
-      <li>AIツール活用（ChatGPT, Google AI）</li>
-      <li>製造業向け在庫・生産管理改善</li>
-      <li>GitHub Pages・Google Apps ScriptでのWebツール</li>
-    </ul>
-  </section>
+<h2>得意分野</h2>
+<ul>
+<li>Pythonスクリプトによるデータ集計・自動化(pandas, Jupyter)</li>
+<li>Excel/Google Sheetsの業務ツール作成</li>
+<li>AIツール活用(ChatGPT, Google AI)</li>
+<li>製造業向けの在庫・生産管理の改善</li>
+<li>GitHub Pages・Google Apps ScriptでのWebツール</li>
+</ul>
 
-  <!-- 実績セクション -->
-  <section id="portfolio">
-    <h2>主な実績サンプル</h2>
-    <div class="project">
-      <h3>製造工場向け在庫自動化ツール</h3>
-      <p>Python + Excelで月間集計作業を80%短縮。CrowdWorks案件実績。</p>
-      <a href="https://github.com/fromwest370/project1">GitHubリポジトリ</a>
-    </div>
-    <div class="project">
-      <h3>売上データ分析ダッシュボード</h3>
-      <p>Jupyter + Plotlyで視覚化。投資ポートフォリオ管理ツールとしても活用。</p>
-      <a href="https://github.com/fromwest370/project2">GitHubリポジトリ</a>
-    </div>
-    <div class="project">
-      <h3>AIチャットボット業務支援</h3>
-      <p>Google AIを活用した問い合わせ自動化。個人プロジェクト。</p>
-      <a href="https://github.com/fromwest370/project3">デモ</a>
-    </div>
-  </section>
+<h2>実績サンプル</h2>
+<p class="note">以下は、個人で制作したサンプルです(実際の案件ではありません)。</p>
 
-  <!-- サービスセクション -->
-  <section id="services">
-    <h2>提供サービス</h2>
-    <ul>
-      <li>Pythonスクリプト作成：5,000円〜</li>
-      <li>Excelツール開発：10,000円〜</li>
-      <li>カスタム依頼歓迎（見積無料）</li>
-    </ul>
-    <p>納期：小規模1〜3日、大規模1週間以内。修正無料1回付き。</p>
-  </section>
+<div class="work">
+<h3>香住ガニの店 地図サンプル</h3>
+<p>オープンデータの施設検索API(OpenPOI API)から店舗データを取得し、駅からの距離順に整理して、地図とCSVにまとめました。出典とライセンスも列として残しています。</p>
+<p><a href="kasumi-crab/kasumi_crab_map.html">地図を見る</a> / <a href="kasumi-crab/kasumi_crab_shops.csv">CSVを見る</a> / <a href="kasumi-crab/">説明(README)</a></p>
+</div>
 
-  <!-- お問い合わせセクション -->
-  <section id="contact">
-    <h2>お仕事依頼・相談はこちら</h2>
-    <p>CrowdWorks: <a href="https://crowdworks.jp/public/employees/6738449?ref=login_header">プロフィール</a></p>
-    <p>ココナラ: <a href="https://coconala.com/users/5814789">プロフィール</a></p>
-    <p>※特定商取引法に基づく表記: 個人事業主 FromWest370（屋号なし）、兵庫県、連絡先上記、キャンセル・返金は作業前相談。</p>
-  </section>
+<div class="work">
+<h3>Clipchamp削除プロジェクトのバイナリ解析</h3>
+<p>削除されたClipchampのプロジェクトを、LevelDBのバイナリ解析で調査したポートフォリオです。Pythonを使用しています。</p>
+<p><a href="https://github.com/fromwest370/clipchamp-leveldb-forensic-analysis">GitHubリポジトリを見る</a></p>
+</div>
 
-  <!-- フッター -->
-  <footer>
-    <p>&copy; 2026 fromwest370. Powered by GitHub Pages.</p>
-  </footer>
+<h2>提供サービス(目安)</h2>
+<ul>
+<li>Pythonスクリプト作成: 5,000円〜</li>
+<li>Excelツール開発: 10,000円〜</li>
+<li>店舗・施設リストの作成と地図化: 3,000円〜</li>
+</ul>
+<p class="note">料金と納期は目安です。内容を伺ってから、お見積もりします(見積もりは無料です)。</p>
+
+<h2>お仕事のご依頼・ご相談</h2>
+<ul>
+<li>CrowdWorks: <a href="https://crowdworks.jp/public/employees/6738449">プロフィール</a></li>
+<li>ココナラ: <a href="https://coconala.com/users/5814789">プロフィール</a></li>
+</ul>
+<p class="note">お取引は、CrowdWorks・ココナラ上で行います。キャンセル・返金は、作業の前にご相談ください。個人事業主 FromWest370(屋号なし)。</p>
+
+<footer>© 2026 fromwest370. Powered by GitHub Pages.</footer>
+</main>
 </body>
 </html>
+
